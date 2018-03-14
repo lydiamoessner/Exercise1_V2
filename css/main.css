@@ -7,96 +7,150 @@ html {
 
 body {
     width: 100%;
-}
-.nav ul {
-    position: absolute;
-    margin-top: -55px;
-    margin-left: 160px;
+    background-color: red;
 }
 
-.nav li{
-    list-style-type: none;
-    padding: 0;
-    width: 100px;
-    display: inline-block;
+div{
+    border: 1px solid red;
+}
+
+hr{
+    width: 95%;
+    color: #000;
+    background-color: #000; /*wieso?*/
+}
+
+p{
+    margin:0;
+    padding:0;
+}
+
+.flexbox{
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: solid 1px black;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.flexbox .box:nth-of-type(4) {
+    background-color: red;
+    margin-right: 40px;
+}
+.flexbox .box:nth-of-type(1) {
+    background-color: red;
+    margin-left: 40px;
 }
 .box{
-	margin-top: 75px;
-	background-color: red;
-	text-align: center;
-	margin-left: 200px;
-    margin-right: 200px;
-	height: 200px;
-    padding-top: 20px;
+    width:20%;
+    margin-top: 10px;
+    /*bottom: 0; Question: How can I get the text alligned at the bottom?*/
+}
+.box1{
+    width:20%;
+    margin-top: 10px;
+
+}
+/*  SECTIONS  */
+.section {
+    clear: both;
+    padding: 0px;
+    margin: 0px;
 }
 
-a{
-    text-decoration: none;
-    font-weight: 900px;
-    color: black;
+/*  COLUMN SETUP  */
+.col {
+    display: inline;
+    float:left;
+    margin: 40px;
+}
+.col:first-child { margin-left: 40px; }
+
+
+/*  GROUPING  */
+.group:before,
+.group:after {
+    content:"";
+    display:table;
+}
+.group:after {
+    clear:both;
+}
+.group {
+    zoom:1; /* For IE 6/7 */
 }
 
-.nav select {
-  display: none;
-  text-align: center;
-  margin-left: 200px;
-  margin-top: 25px;
+/*  GRID OF THREE  */
+.span2_3_of_3 {
+    width: 33.3%;
+}
+.span2_2_of_3 {
+    width: 33.3%;
+}
+.span2_1_of_3 {
+    width: 33.3%;
+}
+.breakout{
+    text-align: center;
+    font-size:12.8em;
+    font-weight: bold;
+    color: white;
+}
+.big{
+    font-size: 2em;
+    font-weight: bold;
+}
+.hidden{
+    color:red;
+}
+.spacetop{
+    margin-top: 30px;
+}
+.spacebottom{
+    margin-bottom: 30px;
 }
 
-@media(max-width: 960px) {
-    /*
-        This checks the viewport width, and if it is less than the max specified (850px here), the contained style rules are applied.
-        This width (here, 850px), is called a breakpoint. You can define multiple breakpoints, but usually you won't need to thing about more than 3 sizes - mobile, tablet, and desktop. If you work efficiently and design carefully, one breakpoint may be enough.
-
-        The C in CSS means cascading - all of the styles above flow on throughout, so you only need to state the styles you want to change - everything else will stay the same.
-        Therefore, start with specifying basic values that will always apply, and then add specific variations inside media queries ("@media(){}").
-    */
-
-    html {
-        font-size: 14px;
+@media (max-width: 870px) {
+    .breakout{
+        font-size:8em;
     }
+}
 
-    header {
-        background-color: rgba(240,240,240,0.85);
-        border-bottom: solid 1px rgba(180,180,180,0.25);
-    }
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
 
-    header h3 {
-        line-height: 0.5rem;
-        color: rgba(50,50,50,0.75);
-    }
-
+@media only screen and (max-width: 675px) {
     .box{
-	   margin-top: 75px;
-	   background-color: grey;
-	   text-align: center;
-	   margin-left: center;
-	   width: 200px;
-       padding-top: 20px;
+        width:150px;
+    }
+    .flexbox{
+        flex-wrap: wrap;
+        flex-basis: 50% | auto;
+    }
+    .flexbox .box {
+        margin-left: 10px;
     }
 
+    .flexbox .box1:nth-of-type(1) {
+        width:0px;
+    }
+    .flexbox .box:nth-of-type(2) {
+        /*background-color: yellow;*/
+        order:-2;
+        margin-left: 40px;
+    }
+    .flexbox .box {
+        margin-right: 40px;
+    }
+    .breakout{
+        font-size:4em;
+    }
 }
-
-@media (max-width: 850px) {
-    .nav li {
-        display: block;
-        } 
+@media (max-width: 675px) {
+    .flexbox .box {
+        margin-left: 40px;
     }
-@media screen and (max-width: 480px) {
-	.box{
-	   margin-top: 75px;
-	   background-color: red;
-	   text-align: center;
-	   margin-left: 155px;
-	   width: 60px;
-	   height: 60px;
-	   font-size: 5px;
-       padding: 1px;
-	}
-
-    .nav ul     { display: none; }
-    .nav select { 
-        display: inline-block;
-        margin-left: 150px;
-     }
 }
